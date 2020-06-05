@@ -188,7 +188,7 @@ Access token gets refreshed if necessary."
           (progn (setq ran? t)
                  (apply fn args))))))
 
-(defun elisp-oauth2-set-vars (token-url oauth-url client-id client-secret scopes refresh-token)
+(defun elisp-oauth-2-set-vars (token-url oauth-url client-id client-secret scopes refresh-token)
   ""
   (setq elisp-oauth-2-api-token-url token-url
         elisp-oauth-2-api-auth-url oauth-url
@@ -198,12 +198,12 @@ Access token gets refreshed if necessary."
         elisp-oauth-2-oauth-refresh-token refresh-token)
   (message "set vars finished"))
 
-(setq _elisp-oauth2-set-vars (once 'elisp-oauth2-set-vars))
+(setq _elisp-oauth-2-set-vars (once 'elisp-oauth-2-set-vars))
 
 ;;;###autoload
-(defun elisp-oauth2-init (token-url oauth-url client-id client-secret scopes refresh-token)
+(defun elisp-oauth-2-init (token-url oauth-url client-id client-secret scopes refresh-token)
   "TODO: add doc"
-  (funcall _elisp-oauth2-set-vars token-url oauth-url client-id client-secret scopes refresh-token))
+  (funcall _elisp-oauth-2-set-vars token-url oauth-url client-id client-secret scopes refresh-token))
 
 ;;;###autoload
 (defun elisp-oauth-2-request (url callback)
