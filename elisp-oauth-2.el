@@ -206,7 +206,7 @@ Access token gets refreshed if necessary."
   (funcall _elisp-oauth-2-set-vars token-url oauth-url client-id client-secret scopes refresh-token))
 
 ;;;###autoload
-(defun elisp-oauth-2-request (url callback)
+(defun elisp-oauth-2-request (&keys url callback method)
   "Wrapper for request to do http calls.
 URL - api endpoint
 CALLBACK - callback function
@@ -214,7 +214,7 @@ TODO: make request type configurable."
   (elisp-oauth-2-handle-oauth)
   (request url
     :complete callback
-    :type "GET"
+    :type method
     :parser 'json-read
     :headers `(("Authorization" . ,(format  "Bearer %s" elisp-oauth-2-oauth-access-token)))))
 
