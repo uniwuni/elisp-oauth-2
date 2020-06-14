@@ -171,15 +171,15 @@
   "Retrieve oauth access token and refresh token if they are nil.
 Access token gets refreshed if necessary."
   (cond ((and elisp-oauth-2-oauth-refresh-token
+              (not (equal "" elisp-oauth-2-oauth-refresh-token))
               (elisp-oauth-2-refresh-oauth-token?))
          (elisp-oauth-2-oauth-refresh-authorization-token))
         ((or (not elisp-oauth-2-oauth-refresh-token)
-             (not elisp-oauth-2-oauth-access-token))
+             (equal "" elisp-oauth-2-oauth-refresh-token)
+             (not elisp-oauth-2-oauth-access-token)
+             (equal "" elisp-oauth-2-oauth-access-token))
          (elisp-oauth-2-fetch-and-set-tokens))
         (t nil)))
-
-;; once implementation
-;;(setq lexical-binding t)
 
 (defun once (fn)
   (let ((ran? nil))
@@ -206,7 +206,7 @@ Access token gets refreshed if necessary."
   (funcall _elisp-oauth-2-set-vars token-url oauth-url client-id client-secret scopes refresh-token))
 
 ;;;###autoload
-(defun elisp-oauth-2-request (&keys url callback method)
+(cl-defun elisp-oauth-2-request (&key url callback method)
   "Wrapper for request to do http calls.
 URL - api endpoint
 CALLBACK - callback function
