@@ -30,7 +30,7 @@
 (defvar elisp-oauth-2-redirect-uri-port "8080"
   "Variable to define spotify API url for authorization.")
 
-(defvar elisp-oauth-2-redirect-uri (concat "http://localhost:"
+(defvar elisp-oauth-2-redirect-uri (concat "http://127.0.0.1:"
                                            elisp-oauth-2-redirect-uri-port)
   "Variable to define spotify API url for authorization.")
 
