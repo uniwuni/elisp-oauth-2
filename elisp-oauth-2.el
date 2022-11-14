@@ -83,8 +83,8 @@
   (format elisp-oauth-2-oauth-url
           elisp-oauth-2-api-auth-url
           elisp-oauth-2-client-id
-          elisp-oauth-2-redirect-uri
-          elisp-oauth-2-scopes))
+          (url-hexify-string elisp-oauth-2-redirect-uri)
+          (url-hexify-string elisp-oauth-2-scopes)))
 
 (defun elisp-oauth-2-fetch-oauth-token ()
   "TODO: add doc."
